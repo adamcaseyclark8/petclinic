@@ -54,7 +54,14 @@ import static org.hamcrest.Matchers.*;
     // Use H2 in-memory database for the integration tests
     "spring.profiles.active=h2,spring-data-jpa",
     "spring.sql.init.platform=h2",
-    "spring.sql.init.mode=always"
+    "spring.sql.init.mode=always",
+    // Use a dedicated in-memory DB so this context does not share state with
+    // other H2-based test contexts that run in the same JVM (DB_CLOSE_DELAY=-1
+    // keeps the named database alive for the full JVM lifetime, which means
+    // multiple Spring application contexts would otherwise share the same DB
+    // and the second context to start would fail because the schema/data SQL
+    // tries to insert rows that already exist).
+    "spring.datasource.url=jdbc:h2:mem:petclinic_it;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
 })
 class VetRestControllerRestAssuredTests {
 

@@ -4,14 +4,14 @@ CREATE TABLE IF NOT EXISTS vets (
   last_name VARCHAR(30) NOT NULL
 );
 
-CREATE INDEX idx_vets_last_name ON vets(last_name);
+CREATE INDEX IF NOT EXISTS idx_vets_last_name ON vets(last_name);
 
 CREATE TABLE IF NOT EXISTS specialties (
   id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   name VARCHAR(80) NOT NULL
 );
 
-CREATE INDEX idx_specialties_name ON specialties(name);
+CREATE INDEX IF NOT EXISTS idx_specialties_name ON specialties(name);
 
 CREATE TABLE IF NOT EXISTS vet_specialties (
   vet_id INTEGER NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS types (
   name VARCHAR(80) NOT NULL
 );
 
-CREATE INDEX idx_types_name ON types(name);
+CREATE INDEX IF NOT EXISTS idx_types_name ON types(name);
 
 CREATE TABLE IF NOT EXISTS owners (
   id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS owners (
   telephone VARCHAR(20) NOT NULL
 );
 
-CREATE INDEX idx_owners_last_name ON owners(last_name);
+CREATE INDEX IF NOT EXISTS idx_owners_last_name ON owners(last_name);
 
 CREATE TABLE IF NOT EXISTS pets (
   id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS pets (
   FOREIGN KEY (type_id) REFERENCES types(id) ON DELETE CASCADE
 );
 
-CREATE INDEX idx_pets_name ON pets(name);
+CREATE INDEX IF NOT EXISTS idx_pets_name ON pets(name);
 
 CREATE TABLE IF NOT EXISTS visits (
   id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
