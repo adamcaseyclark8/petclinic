@@ -24,7 +24,7 @@
         <!-- REST Assured 5.4.0 requires Groovy 4.x; Spring Boot 4 would pull 5.x -->
         <groovy.version>4.0.23</groovy.version>
         <springdoc-openapi-ui.version>3.0.1</springdoc-openapi-ui.version>
-        <jackson-databind-nullable.version>0.2.8</jackson-databind-nullable.version>
+        <jackson-databind-nullable.version>0.2.9</jackson-databind-nullable.version>
         <mapstruct.version>1.6.3</mapstruct.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
 
